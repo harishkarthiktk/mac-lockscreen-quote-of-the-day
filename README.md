@@ -79,7 +79,7 @@ sudo launchctl load /Library/LaunchDaemons/com.harishkarthiktk.quoteoftheday.pli
 NOTE: will soon provide a single bash file for the setup, in one execution to make the setup easier.
 
 ## Features
--  Read random line from provided text file and set it as lock screen message.
+- Read random line from provided text file and set it as lock screen message.
 - Intention is the cycle through multiple quotes to act as a muse.
 
 
