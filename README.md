@@ -6,7 +6,7 @@ Forked from [mac-lockscreen-quote-of-the-day](https://github.com/mweisz/mac-lock
 
 ## Introduction
 Provides a 'Quote of the Day' feature for the logon/lock screen of OS X.
-![alt text](https://github.com/harishkarthiktk/mac-lockscreen-quote-of-the-day/blob/master/docs/img/lock_screen.png "Login Screen with Random Quote")
+![alt text](https://github.com/harishkarthiktk/mac-lockscreen-quote-of-the-day/blob/master/docs/img/lockscreen.png "Login Screen with Random Quote")
 
 ## Features
 -  Read random line from provided text file and set it as lock screen message
