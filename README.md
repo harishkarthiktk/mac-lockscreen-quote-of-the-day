@@ -1,5 +1,8 @@
 Quote of the Day for Lock Screen
 ===============================
+Forked from [mac-lockscreen-quote-of-the-day](https://github.com/mweisz/mac-lockscreen-quote-of-the-day)
+- I will be adding further functionalities and implementation support.
+- My main use case is to be able to rotate lock-screen message to custom messages, preferably from a text file or external data read through an API call.
 
 ## Introduction
 Provides a 'Quote of the Day' feature for the logon/lock screen of OS X.
