@@ -11,27 +11,76 @@ Provides a 'Quote of the Day' feature for the logon/lock screen of OS X.
 
 ## Installation and Setup.
 
-Option 1)
+### Option 1)
 Execute the script directly once using:
 ```bash
 sudo sh change_quote.sh
 ```
 
-Option 2)
-- There are multiple ways of configuring a bash script to run on schedule in OS X.
-- A launchd is similar to a cron job and can be configured.
-- launchd can run a LaunchAgent.
-- But it won't run LaunchAgents as root.
+### Option 2)
+- Automate and setup a schedule that runs the bash script on OS X.
+- A launchd is similar to a cron job and can be configured to run the script.
+- launchd can run a LaunchAgent, it won't run the script as root.
 - LaunchDaemons run as root-only but will not have access to user directories.
 - Therefore the script will have to be moved to a common directory, and a plist has to be configured for the LaunchDaemon to access and execute.
+- Use ./quotes.txt file for testing, but use absolute path if deploying through LaunchDaemon
 
 
+**Steps:**
+```bash
+sudo cp ./script/change_quote.sh /Library/Scripts/change_quote.sh
+sudo cp ./script/quotes.txt /Library/Scripts/quotes.txt
+sudo nano /Library/LaunchDaemons/com.harishkarthiktk.quoteoftheday.plist
+```
+And save the following xml as the plist while running nano.
 
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN"
+ "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.harishkarthiktk.quoteoftheday</string>
 
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Library/Scripts/change_quote.sh</string>
+    </array>
+
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>11</integer>
+        <key>Minute</key>
+        <integer>0</integer>
+    </dict>
+
+    <key>RunAtLoad</key>
+    <false/>
+
+    <key>StandardOutPath</key>
+    <string>/var/log/quoteoftheday.log</string>
+
+    <key>StandardErrorPath</key>
+    <string>/var/log/quoteoftheday.err</string>
+</dict>
+</plist> 
+```
+
+continue further steps:
+```bash
+sudo chown root:wheel /Library/LaunchDaemons/com.harishkarthiktk.quoteoftheday.plist
+sudo chmod 644 /Library/LaunchDaemons/com.harishkarthiktk.quoteoftheday.plist
+
+sudo launchctl load /Library/LaunchDaemons/com.harishkarthiktk.quoteoftheday.plist
+```
+
+NOTE: will soon provide a single bash file for the setup, in one execution to make the setup easier.
 
 ## Features
--  Read random line from provided text file and set it as lock screen message
--  Use publicly available quotation sources like Wikiquote.org
+-  Read random line from provided text file and set it as lock screen message.
+- Intention is the cycle through multiple quotes to act as a muse.
 
-## Installation
-Add the script to your log off hook, so that it will change your quote whenever you log off. 
+
+Use with care, feel free to criticize and make modifications as needed.
