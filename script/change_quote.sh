@@ -7,7 +7,7 @@
 
 # Uncomment and use ./quotes.txt file for testing, but use absolute path if deploying through LaunchDaemon
 # MESSAGES_FILE="./quotes.txt"
-MESSAGES_FILE = "/Library/Scripts/quotes.txt"
+MESSAGES_FILE="/Library/Scripts/quotes.txt"
 
 # Pick a random message
 RANDOM_MESSAGE=$(shuf -n 1 "$MESSAGES_FILE")

@@ -76,11 +76,19 @@ sudo chmod 644 /Library/LaunchDaemons/com.harishkarthiktk.quoteoftheday.plist
 sudo launchctl load /Library/LaunchDaemons/com.harishkarthiktk.quoteoftheday.plist
 ```
 
-NOTE: will soon provide a single bash file for the setup, in one execution to make the setup easier.
+## Option 3) Single Installation and Uninstallation bash:
+```bash
+# For Installation
+sudo chmod +x setup.sh
+sudo sh ./setup.sh
+
+# And for Uninstallation
+sudo chmod +x uninstall.sh
+sudo sh ./uninstall.sh 
+```
 
 ## Features
 - Read random line from provided text file and set it as lock screen message.
 - Intention is the cycle through multiple quotes to act as a muse.
-
 
 Use with care, feel free to criticize and make modifications as needed.
